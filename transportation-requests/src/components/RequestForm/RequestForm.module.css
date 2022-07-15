@@ -1,0 +1,7 @@
+.request_form {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 600px;
+  margin: 1rem auto;
+  padding: 1rem;
+}
