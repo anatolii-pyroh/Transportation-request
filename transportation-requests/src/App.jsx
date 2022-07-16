@@ -22,7 +22,7 @@ function App() {
       request.from = prompt(`Please enter new value of ${requestPart}`)
     }
     if (requestPart === "to") {
-      request.to = prompt`Please enter new value of ${requestPart}`()
+      request.to = prompt(`Please enter new value of ${requestPart}`)
     }
     if (requestPart === "type") {
       request.type = prompt(`Please enter new value of ${requestPart}`)
