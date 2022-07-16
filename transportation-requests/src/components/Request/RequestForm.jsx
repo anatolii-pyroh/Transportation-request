@@ -12,8 +12,6 @@ const requestForm = (props) => {
     setSymbolsCount(100 - event.target.value.length);
   };
 
-  const [isFormValid, setIsFormValid] = useState();
-
   const cityFrom = useRef();
   const cityTo = useRef();
   const parcelType = useRef();
@@ -46,6 +44,7 @@ const requestForm = (props) => {
     };
     props.addNewRequest(newRequest);
     e.target.reset();
+    setSymbolsCount(100)
   };
 
   return (

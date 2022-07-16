@@ -1,8 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import Badge from "react-bootstrap/Badge";
 import ListGroup from "react-bootstrap/ListGroup";
+import RequestEditWindow from "./RequestEditWindow";
 
 const RequestItem = (props) => {
+
+  const [showWindow, setShowWindow] = useState(false);
+  const handleCloseWindow = () => setShowWindow(false);
+  const handleShowWindow = () => setShowWindow(true);
+  
   return (
     <React.Fragment>
       <ListGroup.Item
@@ -26,13 +32,14 @@ const RequestItem = (props) => {
             {props.request.description}
           </div>
         </div>
-        <Badge bg='primary' pill onClick={() => console.log("edit")}>
+        <Badge bg='primary' pill onClick={handleShowWindow}>
           Edit
         </Badge>
         <Badge bg='danger' pill onClick={() => props.delete(props.request)}>
           Delete
         </Badge>
       </ListGroup.Item>
+      <RequestEditWindow show={showWindow} close={handleCloseWindow} edit={props.edit} request={props.request}/>
     </React.Fragment>
   );
 };
