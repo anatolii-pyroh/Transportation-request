@@ -1,13 +1,21 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Badge from "react-bootstrap/Badge";
 import ListGroup from "react-bootstrap/ListGroup";
-import RequestEditWindow from "./RequestEditWindow";
+import RequestWindow from "./RequestWindow";
 
 const RequestItem = (props) => {
+  const [showEditWindow, setShowEditWindow] = useState(false);
+  const handleCloseEditWindow = () => setShowEditWindow(false);
+  const handleShowEditWindow = () => setShowEditWindow(true);
 
-  const [showWindow, setShowWindow] = useState(false);
-  const handleCloseWindow = () => setShowWindow(false);
-  const handleShowWindow = () => setShowWindow(true);
+  const [showDeleteWindow, setShowDeleteWindow] = useState(false);
+  const handleCloseDeleteWindow = () => setShowDeleteWindow(false);
+  const handleShowDeleteWindow = () => setShowDeleteWindow(true);
+
+  const DeleteAndClose = () => {
+    props.delete(props.request);
+    handleCloseDeleteWindow
+  }
   
   return (
     <React.Fragment>
@@ -32,14 +40,22 @@ const RequestItem = (props) => {
             {props.request.description}
           </div>
         </div>
-        <Badge bg='primary' pill onClick={handleShowWindow}>
+        <Badge bg='primary' pill onClick={handleShowEditWindow}>
           Edit
         </Badge>
-        <Badge bg='danger' pill onClick={() => props.delete(props.request)}>
+        <Badge bg='danger' pill onClick={handleShowDeleteWindow}>
           Delete
         </Badge>
       </ListGroup.Item>
-      <RequestEditWindow show={showWindow} close={handleCloseWindow} edit={props.edit} request={props.request}/>
+      <RequestWindow
+        showEdit={showEditWindow}
+        closeEdit={handleCloseEditWindow}
+        edit={props.edit}
+        request={props.request}
+        showDelete={showDeleteWindow}
+        closeDelete={handleCloseDeleteWindow}
+        closeDeleteRequest={DeleteAndClose}
+      />
     </React.Fragment>
   );
 };

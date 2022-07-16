@@ -1,4 +1,4 @@
-.buttons div {
+.centered div{
     display: flex;
     justify-content: center;
 }
