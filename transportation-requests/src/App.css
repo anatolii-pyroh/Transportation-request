@@ -1,8 +1,10 @@
-
 #root {
   width: 1000px;
   margin: 0 auto;
   padding: 1rem;
   display: flex;
   justify-content: center;
+}
+span.badge {
+  cursor: pointer !important;
 }

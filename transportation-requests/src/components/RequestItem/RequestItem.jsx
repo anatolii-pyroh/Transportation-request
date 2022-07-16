@@ -8,7 +8,6 @@ const RequestItem = (props) => {
       <ListGroup.Item
         as='li'
         className='d-flex justify-content-between align-items-start'
-        key={props.request.id}
       >
         <div className='ms-2 me-auto'>
           <div className='fw-bold'>
@@ -27,14 +26,12 @@ const RequestItem = (props) => {
             {props.request.description}
           </div>
         </div>
-        <div style={{ cursor: "pointer" }}>
-          <Badge bg='primary' pill onClick={() => console.log("edit")}>
-            Edit
-          </Badge>
-          <Badge bg='danger' pill onClick={() => console.log("delete")}>
-            Delete
-          </Badge>
-        </div>
+        <Badge bg='primary' pill onClick={() => console.log("edit")}>
+          Edit
+        </Badge>
+        <Badge bg='danger' pill onClick={() => props.delete(props.request)}>
+          Delete
+        </Badge>
       </ListGroup.Item>
     </React.Fragment>
   );

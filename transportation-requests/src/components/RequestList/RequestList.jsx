@@ -8,7 +8,7 @@ const RequestList = (props) => {
     <div className={classes["request_list"]}>
         <ListGroup as='ol' numbered>
           {props.requests.map((request) => (
-            <RequestItem request={request} />
+            <RequestItem key={request.id} request={request} delete={props.deleteRequest}/>
           ))}
         </ListGroup>
     </div>
