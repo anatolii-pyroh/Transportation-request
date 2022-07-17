@@ -4,14 +4,17 @@ import ListGroup from "react-bootstrap/ListGroup";
 import RequestWindow from "./RequestWindow";
 
 const RequestItem = (props) => {
+  // states for edit window
   const [showEditWindow, setShowEditWindow] = useState(false);
   const handleCloseEditWindow = () => setShowEditWindow(false);
   const handleShowEditWindow = () => setShowEditWindow(true);
 
+  // state for delete window
   const [showDeleteWindow, setShowDeleteWindow] = useState(false);
   const handleCloseDeleteWindow = () => setShowDeleteWindow(false);
   const handleShowDeleteWindow = () => setShowDeleteWindow(true);
 
+  // function for accepted delete option
   const DeleteAndClose = () => {
     props.delete(props.request);
     handleCloseDeleteWindow
@@ -19,6 +22,7 @@ const RequestItem = (props) => {
   
   return (
     <React.Fragment>
+      {/* item(s) */}
       <ListGroup.Item
         as='li'
         className='d-flex justify-content-between align-items-start'
@@ -47,6 +51,8 @@ const RequestItem = (props) => {
           Delete
         </Badge>
       </ListGroup.Item>
+
+      {/* window */}
       <RequestWindow
         showEdit={showEditWindow}
         closeEdit={handleCloseEditWindow}

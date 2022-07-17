@@ -15,23 +15,24 @@ function App() {
     setRequests(requests.filter((r) => r.id !== request.id));
     console.log("request deleted");
   };
-  const editRequest = (requestPart, request) => {
-    console.log(requestPart);
-    console.log(request)
-    if (requestPart === "from") {
-      request.from = prompt(`Please enter new value of ${requestPart}`)
+  const editRequest = (whichPartEdit, editedPart, request) => {
+    console.log(whichPartEdit);
+    console.log(editedPart);
+    console.log(request);
+    if (whichPartEdit === "from") {
+      request.from = editedPart;
     }
-    if (requestPart === "to") {
-      request.to = prompt(`Please enter new value of ${requestPart}`)
+    if (whichPartEdit === "to") {
+      request.to = editedPart;
     }
-    if (requestPart === "type") {
-      request.type = prompt(`Please enter new value of ${requestPart}`)
+    if (whichPartEdit === "type") {
+      request.type = editedPart;
     }
-    if (requestPart === "date") {
-      request.date = prompt(`Please enter new value of ${requestPart}`)
+    if (whichPartEdit === "date") {
+      request.date = editedPart;
     }
-    if (requestPart === "description") {
-      request.description = prompt(`Please enter new value of ${requestPart}`)
+    if (whichPartEdit === "description") {
+      request.description = editedPart;
     }
   };
   return (
