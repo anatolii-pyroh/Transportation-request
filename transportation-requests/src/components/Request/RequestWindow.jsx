@@ -13,9 +13,8 @@ const EditWindow = (props) => {
   const [showInput, setShowInput] = useState(false);
   const [inputType, setInputType] = useState();
   const inputRef = useRef();
-  // getting what exact part of request we are editing from dialog window and
-  // sending the information to App.jsx to editRequest() function
-  const [whichPartEdit, setWhichPartEdit] = useState()
+  // getting what exact part of request we are editing from dialog window
+  const [whichPartEdit, setWhichPartEdit] = useState();
   const editPartIsFrom = () => {
     setWhichPartEdit("from");
     setInputType("text");
@@ -43,12 +42,12 @@ const EditWindow = (props) => {
   };
 
   // close list of buttons and show input when user select what part to edit
-  const closeListAndShowInput = (part) => {
+  const closeListAndShowInput = () => {
     setShowList(false);
     setShowInput(true);
   };
   // save input value and send it to App.jsx to editRequest function, show list of buttons after
-  // information is sent
+  // the information is sent
   const saveAndSend = (editedPart) => {
     if (editedPart.trim().length < 1) {
       inputRef.current.value = "";
@@ -64,7 +63,7 @@ const EditWindow = (props) => {
     setShowInput(false);
     setShowList(true);
   };
-  
+
   return (
     <React.Fragment>
       <Modal show={props.showEdit} onHide={hideWindow} centered>
@@ -142,7 +141,7 @@ const EditWindow = (props) => {
               <Modal.Title>Enter new value</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <Form.Control type={inputType} ref={inputRef}></Form.Control>
+              <Form.Control type={inputType} ref={inputRef} />
             </Modal.Body>
             <Modal.Footer>
               <Button

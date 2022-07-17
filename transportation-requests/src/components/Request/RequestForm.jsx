@@ -25,11 +25,11 @@ const requestForm = (props) => {
     const type = parcelType.current.value;
     const date = dispatchDate.current.value;
     const description = parcelDescription.current.value;
-
+    const hasNumber = /\d/;
     if (
-      from.trim().length < 1 ||
-      to.trim().length < 1 ||
-      type.trim().length < 1 ||
+      from.trim().length < 1 || hasNumber.test(from) ||
+      to.trim().length < 1 ||  hasNumber.test(to) ||
+      type.trim().length < 1 ||  hasNumber.test(type) ||
       date.length < 1
     ) {
       return;
